@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task Manager</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Task Management App</h1>
+
+<a href="/logout">Logout</a>
+
+<form action="/add" method="POST">
+
+<input
+type="text"
+name="title"
+placeholder="Enter Task"
+required>
+
+<button>Add Task</button>
+
+</form>
+
+<table>
+
+<tr>
+<th>Task</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+{% for task in tasks %}
+
+<tr>
+
+<td>{{ task[2] }}</td>
+
+<td>{{ task[3] }}</td>
+
+<td>
+
+<a href="/complete/{{ task[0] }}">
+Complete
+</a>
+
+<a href="/delete/{{ task[0] }}">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>
